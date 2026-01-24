@@ -36,102 +36,6 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            overflow: hidden;
-        }
-
-        .ticker-wrapper {
-            position: fixed;
-            z-index: 1000;
-        }
-
-        .ticker-top {
-            top: 0;
-            left: 0;
-            right: 0;
-            border-bottom: 1px solid #0f0;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .ticker-bottom {
-            bottom: 0;
-            left: 0;
-            right: 0;
-            border-top: 1px solid #0f0;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .ticker-left {
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            border-right: 1px solid #0f0;
-            overflow: hidden;
-            background: #000;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-        }
-
-        .ticker-right {
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 40px;
-            border-left: 1px solid #0f0;
-            overflow: hidden;
-            background: #000;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-        }
-
-        .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            padding: 8px 0;
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            animation: scroll-left 20s linear infinite;
-            transition: all 0.3s ease;
-        }
-
-        .ticker-wrapper:hover .ticker-content {
-            animation-play-state: paused;
-        }
-
-        .ticker-bottom .ticker-content {
-            animation: scroll-right 20s linear infinite;
-        }
-
-        .ticker-left .ticker-content {
-            padding: 0 8px;
-            animation: scroll-down 15s linear infinite;
-        }
-
-        .ticker-right .ticker-content {
-            padding: 0 8px;
-            animation: scroll-up 15s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes scroll-right {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-        }
-
-        @keyframes scroll-down {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
-        }
-
-        @keyframes scroll-up {
-            0% { transform: translateY(-50%); }
-            100% { transform: translateY(0); }
         }
 
         .container {
@@ -141,7 +45,7 @@
 
         .logo {
             font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             font-weight: 900;
             letter-spacing: -0.05em;
             margin-bottom: 25px;
@@ -174,82 +78,12 @@
     </style>
 </head>
 <body>
-    <div class="ticker-wrapper ticker-top">
-        <div class="ticker-content">
-            A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// 
-        </div>
-    </div>
-
-    <div class="ticker-wrapper ticker-bottom">
-        <div class="ticker-content">
-            A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// 
-        </div>
-    </div>
-
-    <div class="ticker-wrapper ticker-left">
-        <div class="ticker-content">
-            A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// 
-        </div>
-    </div>
-
-    <div class="ticker-wrapper ticker-right">
-        <div class="ticker-content">
-            A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// 
-        </div>
-    </div>
-
     <div class="container">
         <div class="logo">MHTERA</div>
         <div class="message">
-            ...is on the way<span class="cursor">_</span>
+            is on the way<span class="cursor">_</span>
         </div>
         <div class="footer">// 2026</div>
     </div>
-
-    <script>
-        // Deeper hum sound - darker drone
-        let audioContext;
-        let oscillator;
-        let gainNode;
-
-        function startDeeperHum() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                
-                oscillator = audioContext.createOscillator();
-                gainNode = audioContext.createGain();
-                
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(120, audioContext.currentTime); // Deeper: 120Hz instead of 60Hz
-                
-                gainNode.gain.setValueAtTime(0.06, audioContext.currentTime);
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.start();
-            }
-        }
-
-        // Start sound on first interaction
-        document.addEventListener('click', startDeeperHum, { once: true });
-
-        // Ticker hover effect
-        const tickers = document.querySelectorAll('.ticker-wrapper');
-        const secretText = 'MHTERACORP /// ';
-        
-        tickers.forEach(ticker => {
-            const content = ticker.querySelector('.ticker-content');
-            const original = content.textContent;
-            
-            ticker.addEventListener('mouseenter', () => {
-                content.textContent = secretText.repeat(15);
-            });
-            
-            ticker.addEventListener('mouseleave', () => {
-                content.textContent = original;
-            });
-        });
-    </script>
 </body>
 </html>
