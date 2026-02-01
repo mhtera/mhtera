@@ -37,6 +37,66 @@
             justify-content: center;
             padding: 20px;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Gradient blob background */
+        .blob-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.08;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .blob1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #00ff00, #00aa00);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #00ffaa, #00ff88);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -7s;
+        }
+
+        .blob3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #00ff66, #00cc55);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(100px, -100px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 100px) scale(0.9);
+            }
         }
 
         .ticker-wrapper {
@@ -50,7 +110,8 @@
             right: 0;
             border-bottom: 1px solid #0f0;
             overflow: hidden;
-            background: #000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .ticker-bottom {
@@ -59,7 +120,8 @@
             right: 0;
             border-top: 1px solid #0f0;
             overflow: hidden;
-            background: #000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .ticker-left {
@@ -69,7 +131,8 @@
             width: 40px;
             border-right: 1px solid #0f0;
             overflow: hidden;
-            background: #000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             writing-mode: vertical-rl;
             text-orientation: mixed;
         }
@@ -81,7 +144,8 @@
             width: 40px;
             border-left: 1px solid #0f0;
             overflow: hidden;
-            background: #000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             writing-mode: vertical-rl;
             text-orientation: mixed;
         }
@@ -132,6 +196,8 @@
         .container {
             max-width: 800px;
             text-align: center;
+            position: relative;
+            z-index: 100;
         }
 
         .logo {
@@ -193,6 +259,13 @@
     </style>
 </head>
 <body>
+    <!-- Gradient blob background -->
+    <div class="blob-container">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
     <div class="ticker-wrapper ticker-top">
         <div class="ticker-content">
             A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// A NEW ERA FOR GR INTERNET IS NEAR /// 
