@@ -6,7 +6,7 @@
     <title>MHTERAGR</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%230f0'/></svg>">
     
-    <!-- Open Graph Meta Tags για WhatsApp, Facebook -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="MHTERA">
     <meta property="og:description" content="MHTERA is on the way.">
     <meta property="og:image" content="https://mhtera.gr/preview.png">
@@ -93,11 +93,6 @@
             font-size: 0.8rem;
             letter-spacing: 0.15em;
             animation: scroll-left 20s linear infinite;
-            transition: all 0.3s ease;
-        }
-
-        .ticker-wrapper:hover .ticker-content {
-            animation-play-state: paused;
         }
 
         .ticker-bottom .ticker-content {
@@ -141,7 +136,7 @@
 
         .logo {
             font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             font-weight: 900;
             letter-spacing: -0.05em;
             margin-bottom: 25px;
@@ -166,8 +161,32 @@
             51%, 100% { opacity: 0; }
         }
 
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            background: transparent;
+            color: #0f0;
+            padding: 6px 14px;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            border: 1px solid #0f0;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .social-btn:hover {
+            opacity: 1;
+            background: rgba(0, 255, 0, 0.1);
+        }
+
         .footer {
-            margin-top: 100px;
+            margin-top: 80px;
             font-size: 0.75rem;
             opacity: 0.4;
         }
@@ -201,13 +220,19 @@
     <div class="container">
         <div class="logo">MHTERA</div>
         <div class="message">
-            ...is on the way<span class="cursor">_</span>
+            is on the way<span class="cursor">_</span>
         </div>
+        
+        <div class="social-buttons">
+            <a href="https://www.youtube.com/@MHTERAGR" target="_blank" class="social-btn">YT</a>
+            <a href="https://www.tiktok.com/@mhteragr" target="_blank" class="social-btn">TT</a>
+        </div>
+        
         <div class="footer">// 2026</div>
     </div>
 
     <script>
-        // Deeper hum sound - darker drone
+        // Deeper hum sound
         let audioContext;
         let oscillator;
         let gainNode;
@@ -220,7 +245,7 @@
                 gainNode = audioContext.createGain();
                 
                 oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(120, audioContext.currentTime); // Deeper: 120Hz instead of 60Hz
+                oscillator.frequency.setValueAtTime(120, audioContext.currentTime);
                 
                 gainNode.gain.setValueAtTime(0.06, audioContext.currentTime);
                 
@@ -231,7 +256,6 @@
             }
         }
 
-        // Start sound on first interaction
         document.addEventListener('click', startDeeperHum, { once: true });
 
         // Ticker hover effect
